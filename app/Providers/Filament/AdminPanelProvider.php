@@ -19,22 +19,12 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
 {
-    //TODO: -
-    // - complete shops widgets
-    // - complete admin panel widgets
-    // - optimize imports
-    // - create docker compose file
-    // - create ERD diagram
-    // - create repo and push remote
-    // - create README.md file
-    // - revise todos
-
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('')
             ->login()
             ->registration()
             ->brandName("Dates Supply Chain")

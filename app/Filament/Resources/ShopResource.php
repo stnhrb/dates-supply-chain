@@ -18,6 +18,8 @@ class ShopResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
     protected static ?string $navigationGroup = 'Supply Chain Management';
     protected static ?string $recordTitleAttribute = 'name';
+    protected static ?int $navigationSort = 3;
+
 
     public static function form(Form $form): Form
     {
@@ -47,7 +49,7 @@ class ShopResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('city')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('factories.name') // TODO: make this prettier
+                Tables\Columns\TextColumn::make('factories.name')
                 ->label('Factory Name')
                     ->badge(),
                 Tables\Columns\TextColumn::make('sales')

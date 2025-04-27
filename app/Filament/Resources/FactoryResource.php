@@ -17,6 +17,7 @@ class FactoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
     protected static ?string $navigationGroup = 'Supply Chain Management';
     protected static ?string $recordTitleAttribute = 'name';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -78,28 +79,6 @@ class FactoryResource extends Resource
                 ]),
             ]);
     }
-
-//    public static function infoList(InfoList $infoList): InfoList
-//    {
-//        return $infoList
-//            ->schema([
-//                Section::make("Factory")
-//                ->description("Factory Information")
-//                ->schema([
-//                    TextEntry::make('name')
-//                        ->label('Factory Name'),
-//                    TextEntry::make('city')
-//                        ->label('Factory City')
-//                ])->columns(2),
-//                Section::make("Farm")->schema([
-//                    TextEntry::make('farms.name')
-//                        ->label('Farm Palm Count'),
-//                    TextEntry::make('farms.palm_count')
-//                        ->label('Farm Dates Crop in KG'),
-//                    TextEntry::make('farms.dates_crop_in_kg')
-//                ])->columns(2),
-//            ]);
-//    }
 
     public static function getNavigationBadge(): ?string
     {

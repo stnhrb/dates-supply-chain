@@ -13,10 +13,11 @@ class ShopsOverview extends BaseWidget
         return [
             Stat::make('Total Shops', Shop::count())
                 ->icon("heroicon-o-building-storefront"),
-            Stat::make('Total Sales', Shop::sum('sales') . " SAR")
+            Stat::make('Total Sales', number_format(Shop::sum('sales')) . " SAR")
                 ->icon("heroicon-o-building-storefront"),
-            Stat::make('Average Sales', Shop::avg('sales'). " SAR")
+            Stat::make('Average Sales', number_format(Shop::avg('sales')) . " SAR")
                 ->icon("heroicon-o-building-storefront")
+
         ];
     }
 }

@@ -1,0 +1,52 @@
+##############################################################################
+# NOTE: docker compose is not fully working, php dependencies need to be installed.
+# - Use ./run_app.sh to run the app locally
+##############################################################################
+
+version: '3.8'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        networks:
+            - docker-network
+        ports:
+            - 9000:9000
+        depends_on:
+            - db
+        environment:
+            - DB_HOST=db
+            - DB_USERNAME=postgres
+            - DB_PASSWORD=mysecretpassword
+#        command:
+#            - bash -c "php artisan migrate"
+#            - bash -c "php artisan db:seed"
+    caddy:
+        image: caddy:latest
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - .:/var/www/html
+            - ./Caddyfile:/etc/caddy/Caddyfile
+        networks:
+            - docker-network
+        depends_on:
+            - app
+    db:
+        image: bitnami/postgresql:16.3.0
+        platform: linux/amd64
+        ports:
+            - 5432:5432
+        restart: always
+        environment:
+            - POSTGRESQL_DATABASE=dates_supply_chain
+            - POSTGRESQL_USERNAME=postgres
+            - POSTGRESQL_PASSWORD=mysecretpassword
+        networks:
+            - docker-network
+networks:
+    docker-network:
+        driver: bridge

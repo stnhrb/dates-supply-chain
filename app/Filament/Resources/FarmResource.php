@@ -14,12 +14,11 @@ use Filament\Tables\Table;
 class FarmResource extends Resource
 {
     protected static ?string $model = Farm::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
-
     protected static ?string $navigationGroup = 'Supply Chain Management';
-
     protected static ?string $recordTitleAttribute = 'name';
+    protected static ?int $navigationSort = 1;
+
 
     public static function form(Form $form): Form
     {
@@ -34,7 +33,7 @@ class FarmResource extends Resource
                 Forms\Components\TextInput::make('dates_crop_in_kg')
                     ->required()
                     ->numeric(),
-            ]);
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table

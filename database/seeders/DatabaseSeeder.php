@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         Farm::factory(20)->create();
-        Factory::factory(30)
+        Factory::factory(27)
             ->has(Farm::factory(3))
             ->create();
-        Shop::factory(10)
+        Shop::factory(34)
             ->has(Factory::factory(5))
             ->create();
 
