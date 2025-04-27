@@ -9,3 +9,6 @@ Run the following script to set up the project locally:-
 ./run_app.sh
 ```
 
+Login to the application using the following credentials:-
+-  **Username:** admin@admin.com
+-  **Password:** admin
