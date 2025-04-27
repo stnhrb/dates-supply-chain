@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 
 class Farm extends Model
 {
@@ -21,5 +22,10 @@ class Farm extends Model
     public function factories(): BelongsToMany
     {
         return $this->BelongsToMany(Factory::class, 'app.factory_farm');
+    }
+
+    public function lands(): HasOneOrMany
+    {
+        return $this->hasOne(Land::class);
     }
 }
